@@ -1,14 +1,13 @@
-import React, { useId } from 'react';
+import React from 'react';
 import AppProviders from './providers/AppProviders';
 
-function App() {
-  const id = useId();
-  console.log(id);
+import SpreadSheetLoader from './components/SpreadsheetLoader/SpreadsheetLoader';
+
+export default function App() {
   return (
     <AppProviders>
       <div>Hello world!!!</div>
+      <SpreadSheetLoader />
     </AppProviders>
   );
 }
-
-export default App;
