@@ -4,6 +4,7 @@ import AppProviders from './providers/AppProviders';
 import Box from '@mui/material/Box';
 
 import SpreadSheetLoader from './components/SpreadsheetLoader/SpreadsheetLoader';
+import Invoices from './components/Invoices/Invoices';
 
 export default function App() {
   return (
@@ -14,11 +15,15 @@ export default function App() {
           height="100vh"
           width="80vw"
           margin="auto"
+          display="flex"
+          flexDirection="column"
+          rowGap={2}
           sx={{
             padding: 2,
           }}
         >
           <SpreadSheetLoader />
+          <Invoices />
         </Box>
       </Box>
     </AppProviders>
