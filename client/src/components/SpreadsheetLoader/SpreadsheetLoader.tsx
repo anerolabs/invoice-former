@@ -8,8 +8,13 @@ import Button from '@mui/material/Button';
 export default function SpreadSheetLoader() {
   const [input, setInput] = useState('');
   const { isOpen, setIsOpen, setAlert } = useAlert();
+  const [inputError, setInputError] = useState({
+    isError: false,
+    helperText: '',
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    validateSpreadsheetURL(e.target.value);
     setInput(e.target.value);
   };
 
@@ -19,6 +24,20 @@ export default function SpreadSheetLoader() {
       severity: 'error',
     });
     setIsOpen(!isOpen);
+  };
+
+  const validateSpreadsheetURL = (url: string) => {
+    if (url.length < 3) {
+      setInputError({
+        isError: true,
+        helperText: 'URL should be longer than 3 characters',
+      });
+    } else {
+      setInputError({
+        isError: false,
+        helperText: '',
+      });
+    }
   };
 
   return (
@@ -43,6 +62,8 @@ export default function SpreadSheetLoader() {
         onChange={handleChange}
         InputLabelProps={{ shrink: true }}
         fullWidth
+        error={inputError.isError}
+        helperText={inputError.helperText}
       />
       <Button variant="contained" onClick={handleSubmit}>
         Generate Invoices
