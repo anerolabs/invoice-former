@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import AlertProvider from './alert/AlertProvider';
+import { AlertProvider } from './alert/AlertProvider';
 
 import CssBaseline from '@mui/material/CssBaseline';
 

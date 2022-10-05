@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
+import { useAlert } from '../../providers/alert';
+
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 export default function SpreadSheetLoader() {
   const [input, setInput] = useState('');
+  const { isOpen, setIsOpen, setAlert } = useAlert();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    setAlert({
+      message: 'goodjob',
+      severity: 'error',
+    });
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -33,7 +44,9 @@ export default function SpreadSheetLoader() {
         InputLabelProps={{ shrink: true }}
         fullWidth
       />
-      <Button variant="contained">Generate Invoices</Button>
+      <Button variant="contained" onClick={handleSubmit}>
+        Generate Invoices
+      </Button>
     </Box>
   );
 }

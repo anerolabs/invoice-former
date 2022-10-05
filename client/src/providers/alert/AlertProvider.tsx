@@ -1,19 +1,35 @@
-import React, { createContext, useContext } from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
+import React, { createContext, useState } from 'react';
 
-import Snackbar from '@mui/material/Snackbar';
+export const AlertContext = createContext<AlertContext | undefined>(undefined);
 
-export const AlertContext = createContext<string | undefined>(undefined);
-
-export default function AlertProvider(props: ProviderProps) {
+export function AlertProvider(props: ProviderProps) {
   const { children } = props;
 
-  const { Provider } = AlertContext;
-  console.log('Alert context', AlertContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const [alert, setAlert] = useState({
+    severity: 'info',
+    message: 'hi andrew',
+  } as Alert);
+  const value = { isOpen, setIsOpen, alert, setAlert };
 
-  return <Provider value={'hiandrew'}>{children}</Provider>;
+  const { Provider } = AlertContext;
+  return <Provider value={value}>{children}</Provider>;
 }
+
+type AlertContext = {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  alert: Alert;
+  setAlert: (alert: Alert) => void;
+};
 
 type ProviderProps = {
   children: React.ReactNode;
+};
+
+type Severity = 'error' | 'warning' | 'info' | 'success';
+
+type Alert = {
+  message: string;
+  severity: Severity;
 };

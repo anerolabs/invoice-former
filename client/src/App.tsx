@@ -4,12 +4,14 @@ import AppProviders from './providers/AppProviders';
 import Box from '@mui/material/Box';
 
 import Header from './components/header/Header';
+import Alert from './components/alert/Alert';
 import SpreadSheetLoader from './components/spreadsheetloader/SpreadsheetLoader';
 import Invoices from './components/invoices/Invoices';
 
 export default function App() {
   return (
     <AppProviders>
+      <Alert />
       <Box id="root-container" height="100vh" width="100vw" margin="auto">
         <Box
           id="app-shell"
