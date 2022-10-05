@@ -3,8 +3,9 @@ import AppProviders from './providers/AppProviders';
 
 import Box from '@mui/material/Box';
 
-import SpreadSheetLoader from './components/SpreadsheetLoader/SpreadsheetLoader';
-import Invoices from './components/Invoices/Invoices';
+import Header from './components/header/Header';
+import SpreadSheetLoader from './components/spreadsheetloader/SpreadsheetLoader';
+import Invoices from './components/invoices/Invoices';
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
             padding: 2,
           }}
         >
+          <Header />
           <SpreadSheetLoader />
           <Invoices />
         </Box>
