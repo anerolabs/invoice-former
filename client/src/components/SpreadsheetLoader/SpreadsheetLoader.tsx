@@ -19,11 +19,14 @@ export default function SpreadSheetLoader() {
   };
 
   const handleSubmit = () => {
-    setAlert({
-      message: 'goodjob',
-      severity: 'error',
-    });
-    setIsOpen(!isOpen);
+    if (inputError.isError) {
+      setAlert({
+        message: 'Make sure you are using a valid Google Form Spreadsheet URL',
+        severity: 'error',
+      });
+      setIsOpen(!isOpen);
+      return;
+    }
   };
 
   const validateSpreadsheetURL = (url: string) => {

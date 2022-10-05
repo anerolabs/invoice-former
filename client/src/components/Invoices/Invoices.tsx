@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useGetInvoices } from '../../hooks/useGetInvoices';
+
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
 
 export default function Invoices() {
-  const [invoices, setInvoices] = useState([]);
+  const { data: invoices, isLoading } = useQuery(['invoices'], useGetInvoices);
+  console.log('data', invoices);
 
   return (
     <Box
@@ -22,7 +26,7 @@ export default function Invoices() {
       }}
     >
       <Typography variant="h4">Invoices</Typography>
-      <DataGrid rows={rows} columns={columns} />
+      <DataGrid rows={invoices || []} loading={isLoading} columns={columns} />
     </Box>
   );
 }
@@ -40,37 +44,4 @@ const columns: GridColDef[] = [
   { field: 'total', headerName: 'Total' },
   { field: 'sent', headerName: 'Invoice Sent' },
   { field: 'paid', headerName: 'Invoice Paid' },
-];
-
-const rows: GridRowsProp = [
-  {
-    id: 1,
-    formId: '123456',
-    orderPlaced: 'Sep 29, 2022 at 12:22 pm',
-    lastName: 'Carnero',
-    firstName: 'Andrew',
-    email: 'andrew.carnero@gmail.com',
-    phone: '123-456-7890',
-    pickupTime: 'Oct 3, 2022',
-    subtotal: '$50.00',
-    salesTax: '$3.31',
-    total: '$53.31',
-    sent: 'Oct 1, 2022',
-    paid: 'Oct 2, 2022',
-  },
-  {
-    id: 2,
-    formId: '654321',
-    orderPlaced: 'Sep 29, 2022 at 5:38 pm',
-    lastName: 'Mowatt',
-    firstName: 'Joseph',
-    email: 'bulldogbbq65@gmail.com',
-    phone: '123-456-0000',
-    pickupTime: 'Oct 2, 2022',
-    subtotal: '$24.00',
-    salesTax: '$1.59',
-    total: '$25.59',
-    sent: 'Oct 1, 2022',
-    paid: 'Oct 1, 2022',
-  },
 ];
