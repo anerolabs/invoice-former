@@ -1,12 +1,16 @@
 import React, { ReactNode } from 'react';
+
+import AlertProvider from './alert/AlertProvider';
+
 import CssBaseline from '@mui/material/CssBaseline';
 
-export function AppProviders(props: ProviderProps) {
+export default function AppProviders(props: ProviderProps) {
   const { children } = props;
   return (
     <React.StrictMode>
       <CssBaseline />
-      {children}
+
+      <AlertProvider>{children}</AlertProvider>
     </React.StrictMode>
   );
 }
@@ -14,5 +18,3 @@ export function AppProviders(props: ProviderProps) {
 type ProviderProps = {
   children: ReactNode;
 };
-
-export default AppProviders;
