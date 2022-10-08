@@ -12,7 +12,7 @@ type Props = {
 };
 
 export function InvoiceDetails({ invoice }: Props) {
-  console.log(invoice);
+  // console.log(invoice);
   // const { invoice } = props;
 
   return (

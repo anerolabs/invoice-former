@@ -1,5 +1,7 @@
 import React from 'react';
 import AppProviders from './providers/AppProviders';
+import { RouterProvider, Route } from 'react-router-dom';
+import { router } from './providers/router/app-routes';
 
 import Box from '@mui/material/Box';
 
@@ -27,6 +29,7 @@ export default function App() {
         >
           <Header />
           <SpreadSheetLoader />
+          <RouterProvider router={router} />
           <Invoice />
           <Invoices />
         </Box>
