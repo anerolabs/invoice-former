@@ -4,11 +4,10 @@ import { useGetInvoices } from '../../hooks/useGetInvoices';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { DataGrid, GridRowsProp, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-export default function Invoices() {
+export function Invoices() {
   const { data: invoices, isLoading } = useQuery(['invoices'], useGetInvoices);
-  console.log('data', invoices);
 
   return (
     <Box

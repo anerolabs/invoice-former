@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Header from './components/header/Header';
 import Alert from './components/alert/Alert';
 import SpreadSheetLoader from './components/spreadsheetloader/SpreadsheetLoader';
-import Invoices from './components/invoices/Invoices';
+import { Invoices, Invoice } from './components/invoices';
 
 export default function App() {
   return (
@@ -27,6 +27,7 @@ export default function App() {
         >
           <Header />
           <SpreadSheetLoader />
+          <Invoice />
           <Invoices />
         </Box>
       </Box>
