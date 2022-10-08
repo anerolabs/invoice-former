@@ -1,14 +1,15 @@
 import React from 'react';
 import AppProviders from './providers/AppProviders';
+
+import { ViewContainer } from './components/viewcontainer/ViewContainer';
 import { RouterProvider, Route } from 'react-router-dom';
-import { router } from './providers/router/app-routes';
+import { router } from './app-routes';
 
 import Box from '@mui/material/Box';
 
 import Header from './components/header/Header';
 import Alert from './components/alert/Alert';
 import SpreadSheetLoader from './components/spreadsheetloader/SpreadsheetLoader';
-import { Invoices, Invoice } from './components/invoices';
 
 export default function App() {
   return (
@@ -29,9 +30,10 @@ export default function App() {
         >
           <Header />
           <SpreadSheetLoader />
-          <RouterProvider router={router} />
-          <Invoice />
-          <Invoices />
+
+          <ViewContainer>
+            <RouterProvider router={router} />
+          </ViewContainer>
         </Box>
       </Box>
     </AppProviders>

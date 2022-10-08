@@ -6,27 +6,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
-export function Invoices() {
+export function InvoicesView() {
   const { data: invoices, isLoading } = useQuery(['invoices'], useGetInvoices);
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      component="form"
-      noValidate
-      autoComplete="off"
-      p={2}
-      columnGap={2}
-      sx={{
-        border: '1px solid #333',
-        borderRadius: '3px',
-        height: '100%',
-      }}
-    >
+    <>
       <Typography variant="h4">Invoices</Typography>
       <DataGrid rows={invoices || []} loading={isLoading} columns={columns} />
-    </Box>
+    </>
   );
 }
 

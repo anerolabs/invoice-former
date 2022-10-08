@@ -3,7 +3,7 @@ import { useRouteError } from 'react-router-dom';
 
 import Typography from '@mui/material/Typography';
 
-export default function ErrorView() {
+export function ErrorView() {
   const error = useRouteError();
   console.error(error);
 

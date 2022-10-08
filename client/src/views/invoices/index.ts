@@ -1,2 +1,2 @@
 export * from './invoice/Invoice';
-export * from './Invoices';
+export * from './InvoicesView';
