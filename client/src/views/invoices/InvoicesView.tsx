@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useGetInvoices } from '../../hooks/useGetInvoices';
 
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import { ViewHeader } from '../../components/viewheader/ViewHeader';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ export function InvoicesView() {
 
   return (
     <>
-      <Typography variant="h4">Invoices</Typography>
+      <ViewHeader title="Invoices" />
       <DataGrid rows={invoices || []} loading={isLoading} columns={columns} />
     </>
   );

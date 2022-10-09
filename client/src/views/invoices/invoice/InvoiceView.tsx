@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ViewHeader } from '../../../components/viewheader/ViewHeader';
 import { InvoiceDetails } from './InvoiceDetails';
 
 import Table from '@mui/material/Table';
@@ -24,7 +25,7 @@ export function InvoiceView() {
 
   return (
     <>
-      <Typography variant="h4">Invoice </Typography>
+      <ViewHeader title="Invoice" />
       <InvoiceDetails invoice={mockInvoice} />
       Pickup date: {invoice.pickupTime}
       Subtotal: {invoice.subtotal}
