@@ -5,6 +5,7 @@ import { useGetInvoices } from '../../hooks/useGetInvoices';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { Link } from 'react-router-dom';
 
 export function InvoicesView() {
   const { data: invoices, isLoading } = useQuery(['invoices'], useGetInvoices);
@@ -18,6 +19,14 @@ export function InvoicesView() {
 }
 
 const columns: GridColDef[] = [
+  {
+    field: 'invoiceId',
+    headerName: 'Invoice #',
+    renderCell: (cell) => {
+      const id = cell.id;
+      return <Link to={`./${id}`}>{id}</Link>;
+    },
+  },
   { field: 'formId', headerName: 'Google form id' },
   { field: 'orderPlaced', headerName: 'Order placed' },
   { field: 'lastName', headerName: 'Last name' },

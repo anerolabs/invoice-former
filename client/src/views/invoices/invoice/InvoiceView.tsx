@@ -12,8 +12,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-export function Invoice() {
-  //implement react router - use pathname to load invoice id
+export function InvoiceView() {
   const invoice = mockInvoice;
 
   const invoiceSentChip = {
@@ -24,27 +23,14 @@ export function Invoice() {
   };
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      component="form"
-      noValidate
-      autoComplete="off"
-      p={2}
-      columnGap={2}
-      sx={{
-        border: '1px solid #333',
-        borderRadius: '3px',
-        height: '100%',
-      }}
-    >
+    <>
       <Typography variant="h4">Invoice </Typography>
       <InvoiceDetails invoice={mockInvoice} />
       Pickup date: {invoice.pickupTime}
       Subtotal: {invoice.subtotal}
       Sales tax: {invoice.salesTax}
       Total: {invoice.total}
-    </Box>
+    </>
   );
 }
 

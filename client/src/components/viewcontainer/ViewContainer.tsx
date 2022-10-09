@@ -11,9 +11,6 @@ export function ViewContainer(props: ViewContainerProps) {
     <Box
       display="flex"
       flexDirection="column"
-      component="form"
-      noValidate
-      autoComplete="off"
       p={2}
       columnGap={2}
       sx={{

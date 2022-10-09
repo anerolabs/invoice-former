@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import { ErrorView, HomeView, InvoicesView } from './views';
+import { ErrorView, HomeView, InvoicesView, InvoiceView } from './views';
 
 export const router = createBrowserRouter([
   {
@@ -9,7 +9,11 @@ export const router = createBrowserRouter([
     errorElement: <ErrorView />,
   },
   {
-    path: '/invoices',
+    path: 'invoices',
     element: <InvoicesView />,
+  },
+  {
+    path: 'invoices/:invoiceid',
+    element: <InvoiceView />,
   },
 ]);
