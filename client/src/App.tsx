@@ -1,19 +1,16 @@
 import React from 'react';
-import AppProviders from './providers/AppProviders';
-
-import { ViewContainer } from './components/viewcontainer/ViewContainer';
-import { RouterProvider, Route } from 'react-router-dom';
-import { router } from './app-routes';
 
 import Box from '@mui/material/Box';
-
-import Header from './components/header/Header';
 import Alert from './components/alert/Alert';
+import Header from './components/header/Header';
 import SpreadSheetLoader from './components/spreadsheetloader/SpreadsheetLoader';
+import { ViewContainer } from './components/viewcontainer/ViewContainer';
+
+import { Outlet } from 'react-router-dom';
 
 export default function App() {
   return (
-    <AppProviders>
+    <>
       <Alert />
       <Box id="root-container" height="100vh" width="100vw" margin="auto">
         <Box
@@ -28,14 +25,14 @@ export default function App() {
             padding: 2,
           }}
         >
-          <Header />
+          <Header logoClickRoute="/invoices" />
           <SpreadSheetLoader />
 
           <ViewContainer>
-            <RouterProvider router={router} />
+            <Outlet />
           </ViewContainer>
         </Box>
       </Box>
-    </AppProviders>
+    </>
   );
 }

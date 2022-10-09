@@ -1,8 +1,4 @@
 import React, { ReactNode } from 'react';
-
-// import { RouterProvider, Route } from 'react-router-dom';
-// import { router } from './router/app-routes';
-
 import CssBaseline from '@mui/material/CssBaseline';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -18,7 +14,6 @@ export default function AppProviders(props: ProviderProps) {
 
       <QueryClientProvider client={queryClient}>
         <AlertProvider>{children}</AlertProvider>
-        {/* <RouterProvider router={router} /> */}
       </QueryClientProvider>
     </React.StrictMode>
   );
