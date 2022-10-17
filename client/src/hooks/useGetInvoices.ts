@@ -6,7 +6,7 @@ export async function useGetInvoices() {
   return mockRows;
 }
 
-const mockRows: GridRowsProp = [
+const mockRows: Invoice[] = [
   {
     id: 1,
     formId: '123456',
@@ -16,9 +16,9 @@ const mockRows: GridRowsProp = [
     email: 'andrew.carnero@gmail.com',
     phone: '123-456-7890',
     pickupTime: 'Oct 3, 2022',
-    subtotal: '$50.00',
-    salesTax: '$3.31',
-    total: '$53.31',
+    subtotal: 50,
+    salesTax: 3.31,
+    total: 53.31,
     sent: 'Oct 1, 2022',
     paid: 'Oct 2, 2022',
   },
@@ -31,10 +31,26 @@ const mockRows: GridRowsProp = [
     email: 'bulldogbbq65@gmail.com',
     phone: '123-456-0000',
     pickupTime: 'Oct 2, 2022',
-    subtotal: '$24.00',
-    salesTax: '$1.59',
-    total: '$25.59',
+    subtotal: 24,
+    salesTax: 1.59,
+    total: 25.59,
     sent: 'Oct 1, 2022',
     paid: 'Oct 1, 2022',
   },
 ];
+
+type Invoice = {
+  id: number;
+  formId: string;
+  orderPlaced: string;
+  lastName: string;
+  firstName: string;
+  email: string;
+  phone: string;
+  pickupTime: string;
+  subtotal: number;
+  salesTax: number;
+  total: number;
+  sent: string;
+  paid: string;
+};

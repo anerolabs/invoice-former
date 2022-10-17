@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { useGetInvoices } from '../../hooks/useGetInvoices';
+import { useInvoices } from '../../hooks/useInvoices';
 
 import { ViewHeader } from '../../components/viewheader/ViewHeader';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Link } from 'react-router-dom';
 
 export function InvoicesView() {
-  const { data: invoices, isLoading } = useQuery(['invoices'], useGetInvoices);
+  const { invoices, isLoading } = useInvoices();
 
   return (
     <>

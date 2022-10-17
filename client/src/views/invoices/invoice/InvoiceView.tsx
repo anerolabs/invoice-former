@@ -62,7 +62,7 @@ const rows: InfoRow[] = [
   },
 ];
 
-type Invoice = {
+export type Invoice = {
   id: number;
   formId: string;
   orderPlaced: string;

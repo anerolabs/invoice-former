@@ -1,4 +1,5 @@
 import React from 'react';
+import { useInvoices } from './hooks/useInvoices';
 
 import Box from '@mui/material/Box';
 import Alert from './components/alert/Alert';
@@ -9,6 +10,8 @@ import { ViewContainer } from './components/viewcontainer/ViewContainer';
 import { Outlet } from 'react-router-dom';
 
 export default function App() {
+  const invoices = useInvoices();
+
   return (
     <>
       <Alert />
