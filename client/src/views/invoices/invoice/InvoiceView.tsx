@@ -25,7 +25,13 @@ export function InvoiceView() {
 
   return (
     <>
-      <ViewHeader title="Invoice" />
+      <ViewHeader
+        action={{
+          label: 'Back to invoices',
+          route: '/invoices',
+        }}
+        title="Invoice"
+      />
       <InvoiceDetails invoice={mockInvoice} />
       Pickup date: {invoice.pickupTime}
       Subtotal: {invoice.subtotal}
