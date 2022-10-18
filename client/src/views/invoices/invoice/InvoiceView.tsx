@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 import { ViewHeader } from '../../../components/viewheader/ViewHeader';
 import { InvoiceDetails } from './InvoiceDetails';
+import { OrderBreakdown } from './OrderBreakdown';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 export function InvoiceView() {
   const invoice = mockInvoice;
@@ -30,13 +22,16 @@ export function InvoiceView() {
           label: 'Back to invoices',
           route: '/invoices',
         }}
-        title="Invoice"
+        title={`Invoice #${invoice.id}`}
       />
-      <InvoiceDetails invoice={mockInvoice} />
-      Pickup date: {invoice.pickupTime}
-      Subtotal: {invoice.subtotal}
-      Sales tax: {invoice.salesTax}
-      Total: {invoice.total}
+      <Grid pt={5} container spacing={1}>
+        <Grid item xs={12} md={5}>
+          <InvoiceDetails invoice={mockInvoice} />
+        </Grid>
+        <Grid item xs={12} md={7}>
+          <OrderBreakdown />
+        </Grid>
+      </Grid>
     </>
   );
 }
