@@ -6,6 +6,7 @@ import { InvoiceDetails } from './InvoiceDetails';
 import { OrderBreakdown } from './OrderBreakdown';
 
 import Grid from '@mui/material/Grid';
+
 import { useParams } from 'react-router-dom';
 
 export function InvoiceView() {
@@ -37,7 +38,7 @@ export function InvoiceView() {
       />
       <Grid pt={5} container spacing={1}>
         <Grid item xs={12} md={5}>
-          {invoice && <InvoiceDetails invoice={invoice} />}
+          {<InvoiceDetails invoice={invoice} />}
         </Grid>
         <Grid item xs={12} md={7}>
           <OrderBreakdown />

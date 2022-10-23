@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,12 +11,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 type Props = {
-  invoice: Invoice;
+  invoice: Invoice | undefined;
 };
 
 export function InvoiceDetails({ invoice }: Props) {
-  // console.log(invoice);
-  // const { invoice } = props;
+  console.log(invoice);
 
   return (
     <TableContainer component={Paper}>
@@ -26,20 +27,24 @@ export function InvoiceDetails({ invoice }: Props) {
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {rows.map((row) => {
-            return (
-              <TableRow key={row.key}>
-                <TableCell component="th" scope="row">
-                  {row.label}
-                </TableCell>
-                <TableCell component="th" scope="row">
-                  {invoice[row.key]}
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
+        {invoice ? (
+          <TableBody>
+            {rows.map((row) => {
+              return (
+                <TableRow key={row.key}>
+                  <TableCell component="th" scope="row">
+                    {row.label}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {invoice[row.key]}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
+          </TableBody>
+        ) : (
+          <CircularProgress style={{ marginLeft: '50%', marginRight: '50%' }} />
+        )}
       </Table>
     </TableContainer>
   );
