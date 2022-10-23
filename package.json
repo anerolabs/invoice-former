@@ -10,8 +10,10 @@
     "yarn": "use npm instead"
   },
   "scripts": {
-    "start": "npx webpack serve",
+    "build": "npx webpack",
+    "start": "npx webpack serve --history-api-fallback",
     "lint": "./node_modules/.bin/eslint",
+    "prebuild": "rimraf build",
     "start-old": "nodemon server/index.js"
   },
   "dependencies": {
@@ -49,6 +51,7 @@
     "eslint-plugin-sort-destructure-keys": "^1.4.0",
     "eslint-plugin-typescript-sort-keys": "^2.1.0",
     "express": "^4.17.2",
+    "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.15",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",

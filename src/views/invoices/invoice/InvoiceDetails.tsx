@@ -81,9 +81,9 @@ type Invoice = {
   email: string;
   phone: string;
   pickupTime: string;
-  subtotal: string;
-  salesTax: string;
-  total: string;
+  subtotal: number;
+  salesTax: number;
+  total: number;
   sent: string;
   paid: string;
 };

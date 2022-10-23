@@ -1,16 +1,18 @@
 // const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  entry: './client/src/app-mount.tsx',
+  entry: './src/app-mount.tsx',
   output: {
-    path: path.resolve(__dirname, './client/dist'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   mode: 'development',
   devServer: {
     static: {
-      directory: path.join(__dirname, './client/dist'),
+      directory: path.join(__dirname, './public'),
     },
     client: {
       overlay: false,
@@ -48,6 +50,12 @@ const config = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './public/app-index.html',
+    }),
+  ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },

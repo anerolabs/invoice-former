@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
+import { useInvoices } from '../../../hooks/useInvoices';
+
 import { ViewHeader } from '../../../components/viewheader/ViewHeader';
 import { InvoiceDetails } from './InvoiceDetails';
 import { OrderBreakdown } from './OrderBreakdown';
 
 import Grid from '@mui/material/Grid';
+import { useParams } from 'react-router-dom';
 
 export function InvoiceView() {
-  const invoice = mockInvoice;
+  const { invoiceid = 0 } = useParams();
+  const { invoices } = useInvoices();
 
-  const invoiceSentChip = {
-    label: invoice.sent
-      ? `Invoice sent ${invoice.sent}`
-      : 'Invoice not yet sent',
-    color: invoice.sent ? 'primary' : 'error',
-  };
+  // TODO: Optimize invoice lookup
+  const invoiceIdx = Number(invoiceid) - 1;
+  let invoice;
+  if (invoiceid) {
+    invoice = invoices[invoiceIdx];
+  }
+
+  // const invoiceSentChip = {
+  //   label: invoice.sent
+  //     ? `Invoice sent ${invoice.sent}`
+  //     : 'Invoice not yet sent',
+  //   color: invoice.sent ? 'primary' : 'error',
+  // };
 
   return (
     <>
@@ -22,11 +33,11 @@ export function InvoiceView() {
           label: 'Back to invoices',
           route: '/invoices',
         }}
-        title={`Invoice #${invoice.id}`}
+        title={`Invoice #${invoiceid}`}
       />
       <Grid pt={5} container spacing={1}>
         <Grid item xs={12} md={5}>
-          <InvoiceDetails invoice={mockInvoice} />
+          {invoice && <InvoiceDetails invoice={invoice} />}
         </Grid>
         <Grid item xs={12} md={7}>
           <OrderBreakdown />
@@ -82,20 +93,4 @@ export type Invoice = {
 type InfoRow = {
   key: keyof Invoice;
   label: string;
-};
-
-const mockInvoice = {
-  id: 1,
-  formId: '123456',
-  orderPlaced: 'Sep 29, 2022 at 12:22 pm',
-  lastName: 'Carnero',
-  firstName: 'Andrew',
-  email: 'andrew.carnero@gmail.com',
-  phone: '123-456-7890',
-  pickupTime: 'Oct 3, 2022',
-  subtotal: '$50.00',
-  salesTax: '$3.31',
-  total: '$53.31',
-  sent: 'Oct 1, 2022',
-  paid: 'Oct 2, 2022',
 };
